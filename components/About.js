@@ -1,11 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import Style from "../Style";
+import { View, Text, Button } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-export default class About extends React.Component {
+class AboutScreen extends React.Component {
     render() {
         return (
-            <View style={style.view}>
-                <Text style={style.title}>À propos de moi</Text>
+            <View style={Style.container}>
+                <Text style={Style.title}>À propos de moi</Text>
                 <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
@@ -17,8 +19,10 @@ export default class About extends React.Component {
                     deserunt mollit anim id est laborum.
                 </Text>
                 <Button
-                    style={style.makeSearch}
-                    onPress={() => this.search()}
+                    color={Style.color}
+                    onPress={() =>
+                        this.props.navigation.navigate("SearchScreen")
+                    }
                     title="Faire une recherche"
                 />
             </View>
@@ -26,15 +30,18 @@ export default class About extends React.Component {
     }
 }
 
-const style = StyleSheet.create({
-    view: {
-        margin: 20,
-    },
-    title: {
-        fontSize: 22,
-        marginBottom: 20,
-    },
-    makeSearch: {
-        marginTop: 40,
-    },
-});
+const Stack = createNativeStackNavigator();
+
+function About() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="À propos"
+                component={AboutScreen}
+                options={{ headerTitleStyle: { color: Style.color } }}
+            />
+        </Stack.Navigator>
+    );
+}
+
+export default About;
