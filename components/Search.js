@@ -19,21 +19,24 @@ class SearchScreen extends React.Component {
         });
     }
 
+    submit(){
+        this.props.navigation.navigate("Result", {
+            city: this.state.city,
+        })
+    }
+
     render() {
         return (
             <View style={style.container}>
                 <TextInput
                     onChangeText={(text) => this.setCity(text)}
+                    onSubmitEditing={() => this.submit()}
                     style={style.input}
                     value={this.state.city}
                 />
                 <Button
                     color={style.color}
-                    onPress={() =>
-                        this.props.navigation.navigate("Result", {
-                            city: this.state.city,
-                        })
-                    }
+                    onPress={() => this.submit()}
                     title="Rechercher"
                 />
             </View>

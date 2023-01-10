@@ -4,6 +4,7 @@ import { AntDesign, Ionicons } from "@expo/vector-icons";
 import moment from "moment";
 import Style from "../../Style";
 import "moment/locale/fr";
+import FadeInView from "../animation/fadeInView";
 
 moment.locale("fr");
 
@@ -58,7 +59,7 @@ export default class Row extends React.Component {
     render() {
         if (this.props.index === 0) {
             return (
-                <View>
+                <FadeInView delay={this.props.index * 50}>
                     <View style={[style.view, style.firstView]}>
                         <Text style={{ fontSize: 30 }}>
                             <Text style={[style.white, style.bold]}>AUJ.</Text>
@@ -81,24 +82,29 @@ export default class Row extends React.Component {
                             </Text>
                         </View>
                     </View>
-                </View>
+                </FadeInView>
             );
         } else {
             return (
-                <View style={style.view}>
-                    <Text>
-                        {this.day()}
-                        {this.date()}
-                    </Text>
-                    <View
-                        style={{ flexDirection: "row", alignItems: "center" }}
-                    >
-                        {this.icon()}
-                        <Text style={[style.temp, { marginLeft: 15 }]}>
-                            {Math.round(this.props.day.temp.day)}°C
+                <FadeInView delay={this.props.index * 50}>
+                    <View style={style.view}>
+                        <Text>
+                            {this.day()}
+                            {this.date()}
                         </Text>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                alignItems: "center",
+                            }}
+                        >
+                            {this.icon()}
+                            <Text style={[style.temp, { marginLeft: 15 }]}>
+                                {Math.round(this.props.day.temp.day)}°C
+                            </Text>
+                        </View>
                     </View>
-                </View>
+                </FadeInView>
             );
         }
     }
