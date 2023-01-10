@@ -45,11 +45,10 @@ export default class List extends React.Component {
         } else {
             // const ds = new ListViewBase.Da
             return (
-                <View style={{ flex: 1, padding: 10 }}>
+                <View style={{backgroundColor: 'tomato', flex: 1}}>
                     <FlatList
                         data={this.state.report.list}
-                        renderItem={({item, k}) => <WeatherRow day={item} index={parseInt(k, 10)} />}
-                        // renderItem={({item, j, k}) => <Text>{item.temp.day}</Text>}
+                        renderItem={({item, index}) => <WeatherRow day={item} index={index} />}
                     />
                 </View>
             );

@@ -8,7 +8,7 @@ class SearchScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            city: "Lyon",
+            city: "Paris",
         };
         // console.log(this.state.city)
     }
