@@ -14,4 +14,9 @@ export default {
         marginBottom: 15,
         paddingHorizontal: 10,
     },
+    loader: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 };
